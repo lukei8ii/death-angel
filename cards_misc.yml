@@ -74,6 +74,7 @@
     :type: :corridor
     :position: 2
     :from: :bottom
+  name: Void Lock
   left_blip: 6
   right_blip: 6
   major_spawn: 2
@@ -102,6 +103,7 @@
     :type: :corridor
     :position: 2
     :from: :bottom
+  name: Void Lock
   left_blip: 7
   right_blip: 7
   major_spawn: 3
@@ -132,6 +134,7 @@
     :type: :corridor
     :position: 3
     :from: :bottom
+  name: Void Lock
   left_blip: 8
   right_blip: 8
   major_spawn: 4
@@ -161,6 +164,7 @@
     :type: :corridor
     :position: 3
     :from: :bottom
+  name: Void Lock
   left_blip: 9
   right_blip: 9
   major_spawn: 5
