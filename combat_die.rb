@@ -1,4 +1,4 @@
-class Dice
+class CombatDie
   SIDES = 5
   SKULLS = 1..3
 

@@ -1,0 +1,262 @@
+---
+- !ruby/object:EventCard
+  name: Chaos of Battle
+  text: Change every Space Marine's facing.
+  count: 2
+  spawns:
+  - :color: :red
+    :type: :minor
+  - :color: :yellow
+    :type: :minor
+  movement: :adjacent
+  genestealer_type: :head
+- !ruby/object:EventCard
+  name: The Swarm
+  text: Place 2 Genestealer cards into each blip pile (from the Genestealer deck).
+  count: 1
+  spawns:
+  - :color: :yellow
+    :type: :minor
+  - :color: :orange
+    :type: :minor
+  movement: :flank
+  genestealer_type: :tail
+- !ruby/object:EventCard
+  name: The Swarm
+  text: Place 2 Genestealer cards into each blip pile (from the Genestealer deck).
+  count: 1
+  spawns:
+  - :color: :yellow
+    :type: :minor
+  - :color: :orange
+    :type: :minor
+  movement: :flank
+  genestealer_type: :tongue
+- !ruby/object:EventCard
+  name: Full Scan
+  instinct: true
+  text: Choose a blip pile. Discard the top card of the chosen pile.
+  count: 2
+  spawns:
+  - :color: :red
+    :type: :major
+  - :color: :yellow
+    :type: :major
+  movement: :adjacent
+  genestealer_type: :tongue
+- !ruby/object:EventCard
+  name: Secret Route
+  text: If there is a Door Terrain card in the formation, place 2 Support Tokens on it.
+  count: 2
+  spawns:
+  - :color: :orange
+    :type: :major
+  - :color: :green
+    :type: :major
+  movement: :adjacent
+  genestealer_type: :claws
+- !ruby/object:EventCard
+  name: Out of Thin Air
+  instinct: true
+  text: Choose a Space Marine. Spawn 2 Genestealers behind him.
+  count: 1
+  spawns:
+  - :color: :orange
+    :type: :minor
+  - :color: :red
+    :type: :minor
+  movement: :flank
+  genestealer_type: :claws
+- !ruby/object:EventCard
+  name: Out of Thin Air
+  instinct: true
+  text: Choose a Space Marine. Spawn 2 Genestealers behind him.
+  count: 1
+  spawns:
+  - :color: :orange
+    :type: :minor
+  - :color: :red
+    :type: :minor
+  movement: :flank
+  genestealer_type: :head
+- !ruby/object:EventCard
+  name: For My Battle Brothers!
+  instinct: true
+  text: Choose a Space Marine that has at least 1 Support Token (if able). Discard 1 Support Token from him and 1 Genestealer engaged with him (of your choice).
+  count: 2
+  spawns:
+  - :color: :red
+    :type: :major
+  - :color: :orange
+    :type: :minor
+  movement: :adjacent
+  genestealer_type: :tail
+- !ruby/object:EventCard
+  name: Stalking From the Shadows
+  instinct: true
+  text: Choose a Space Marine with at least 1 Support Token. Discard all his Support Tokens.
+  count: 2
+  spawns:
+  - :color: :red
+    :type: :major
+  - :color: :green
+    :type: :minor
+  movement: :adjacent
+  genestealer_type: :head
+- !ruby/object:EventCard
+  name: Gun Jam
+  instinct: true
+  text: Choose a Combat Team that did not reveal an Attack Action this round. Next round, that Combat Team may not play an Attack Action card.
+  count: 2
+  spawns:
+  - :color: :yellow
+    :type: :major
+  - :color: :red
+    :type: :minor
+  movement: :adjacent
+  genestealer_type: :tail
+- !ruby/object:EventCard
+  name: Outnumbered
+  text: Discard all Support Tokens from each Space Marine that is engaged with at least 1 swarm.
+  spawns:
+  - :color: :orange
+    :type: :minor
+  - :color: :red
+    :type: :minor
+  movement: :flank
+  genestealer_type: :claws
+- !ruby/object:EventCard
+  name: Surrounded
+  instinct: true
+  text: Choose a Space Marine. Move all Genestealers (from every position) to the chosen Space Marine's position (do not change their side).
+  spawns:
+  - :color: :red
+    :type: :minor
+  - :color: :orange
+    :type: :minor
+- !ruby/object:EventCard
+  name: Cleansing Flames
+  instinct: true
+  text: Choose a Space Marine and roll a die. If you roll a <skull>, slay 2 Genestealers engaged with him (of your choice).
+  spawns:
+  - :color: :orange
+    :type: :major
+  - :color: :green
+    :type: :major
+  movement: :adjacent
+  genestealer_type: :tongue
+- !ruby/object:EventCard
+  name: Temporary Sanctuary
+  instinct: true
+  text: Choose a swarm of Genestealers. Shuffle all cards from the chosen swarm into the smallest blip pile.
+  spawns:
+  - :color: :red
+    :type: :major
+  - :color: :orange
+    :type: :major
+  movement: :adjacent
+  genestealer_type: :claws
+- !ruby/object:EventCard
+  name: Rescue Space Marine
+  instinct: true
+  text: Choose a Space Marine that has been slain belonging to a non-eliminated Combat Team. Place the Space Marine card at the bottom of the formation facing the right.
+  spawns:
+  - :color: :orange
+    :type: :major
+  - :color: :red
+    :type: :major
+  movement: :adjacent
+  genestealer_type: :claws
+- !ruby/object:EventCard
+  name: Rewarded Faith
+  instinct: true
+  text: Choose a Space Marine. You may discard any number of Support Tokens from him to slay an equal number of Genestealers engaged with him.
+  spawns:
+  - :color: :green
+    :type: :major
+  - :color: :red
+    :type: :minor
+  movement: :adjacent
+  genestealer_type: :tail
+- !ruby/object:EventCard
+  name: Psychic Assault
+  instinct: true
+  text: Choose a Space Marine and roll a die. If you roll a 0 or 1, the Space Marine is slain.
+  spawns:
+  - :color: :red
+    :type: :minor
+  - :color: :orange
+    :type: :minor
+  movement: :flank
+  genestealer_type: :tongue
+- !ruby/object:EventCard
+  name: Quick Instincts
+  instinct: true
+  text: Choose a Space Marine. He may immediately make 1 attack.
+  spawns:
+  - :color: :red
+    :type: :major
+  - :color: :orange
+    :type: :major
+  movement: :adjacent
+  genestealer_type: :tongue
+- !ruby/object:EventCard
+  name: Flanking Maneuver
+  text: Move all Swarms so that they are behind their engaged Space Marine.
+  spawns:
+  - :color: :red
+    :type: :minor
+  - :color: :orange
+    :type: :minor
+- !ruby/object:EventCard
+  name: Resupply
+  instinct: true
+  text: Choose a Space Marine. Move all Support Tokens to him from all other Space Marines.
+  spawns:
+  - :color: :red
+    :type: :major
+  - :color: :yellow
+    :type: :minor
+  movement: :adjacent
+  genestealer_type: :head
+- !ruby/object:EventCard
+  name: Enter Formation
+  text: Each time a player resolves a Move + Activate action card next round, he may first place 1 Support Token on any Space Marine.
+  spawns:
+  - :color: :orange
+    :type: :major
+  - :color: :yellow
+    :type: :major
+  movement: :adjacent
+  genestealer_type: :claws
+- !ruby/object:EventCard
+  name: Evasion
+  text: When a player resolves an Attack Action card next round, he may only attack with 1 Space Marine of that Combat Team (instead of both).
+  spawns:
+  - :color: :yellow
+    :type: :minor
+  - :color: :red
+    :type: :minor
+  movement: :flank
+  genestealer_type: :head
+- !ruby/object:EventCard
+  name: They're Everywhere!
+  text: Spawn 1 Genestealer in front of each Space Marine that is not engaged with a swarm.
+  spawns:
+  - :color: :orange
+    :type: :minor
+  - :color: :red
+    :type: :minor
+  movement: :flank
+  genestealer_type: :tail
+- !ruby/object:EventCard
+  name: Second Wind
+  instinct: true
+  text: Choose a Space Marine. Each time he rolls a 0 while defending next round, the attack misses.
+  spawns:
+  - :color: :yellow
+    :type: :major
+  - :color: :red
+    :type: :major
+  movement: :adjacent
+  genestealer_type: :tongue
