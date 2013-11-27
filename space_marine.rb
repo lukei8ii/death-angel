@@ -6,4 +6,8 @@ class SpaceMarine
   def name
     type.titleize
   end
+
+  # def to_s
+  #   "#{name}, Team: #{team}"
+  # end
 end

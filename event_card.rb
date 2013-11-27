@@ -5,4 +5,8 @@ class EventCard
     event.count = 1
     event
   end
+
+  def to_s
+    "#{name}, Spawns: #{spawns}"
+  end
 end
