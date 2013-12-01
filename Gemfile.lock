@@ -1,12 +1,40 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    activesupport (4.0.1)
+      i18n (~> 0.6, >= 0.6.4)
+      minitest (~> 4.2)
+      multi_json (~> 1.3)
+      thread_safe (~> 0.1)
+      tzinfo (~> 0.3.37)
+    atomic (1.1.14)
+    chingu (0.8.1)
+      crack
+      gosu (>= 0.7.25)
+      rest-client
+    crack (0.4.1)
+      safe_yaml (~> 0.9.0)
     gosu (0.7.50)
     hasu (0.1.4)
       gosu
+    i18n (0.6.5)
+    mime-types (2.0)
+    minitest (4.7.5)
+    multi_json (1.8.2)
+    rest-client (1.6.7)
+      mime-types (>= 1.16)
+    safe_yaml (0.9.7)
+    texplay (0.4.3)
+      gosu (>= 0.7.25)
+    thread_safe (0.1.3)
+      atomic
+    tzinfo (0.3.38)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
+  activesupport
+  chingu
   hasu
+  texplay
