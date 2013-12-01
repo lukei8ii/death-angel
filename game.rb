@@ -9,7 +9,7 @@ ROOT_PATH = File.dirname(File.expand_path(__FILE__))
 MEDIA_PATH = File.join(ROOT_PATH, 'media')
 
 module DeathAngel
-  SELECTED_COLOR = Gosu::Color::WHITE
+  SELECTED_COLOR = :white
   SELECTABLE_COLOR = Gosu::Color::GRAY
   BUTTON_COLOR = Gosu::Color::WHITE
   BUTTON_BACKGROUND_COLOR = :cyan

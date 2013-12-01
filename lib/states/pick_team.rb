@@ -31,9 +31,11 @@ class PickTeam < Chingu::GameState
   def clicked
     @teams.each do |t|
       if t.collides?({ x: $window.mouse_x, y: $window.mouse_y })
-        t.selected = true
-        @selected << t
-        @selected.shift.selected = false if @selected.size > @picks
+        unless t.selected?
+          t.select
+          @selected << t
+          @selected.shift.deselect if @selected.size > @picks
+        end
       end
     end
   end
