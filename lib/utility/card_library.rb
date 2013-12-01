@@ -11,7 +11,7 @@ class CardLibrary
       count = e.count || 1
       count.times { @events << e }
     end
-    @events.shuffle
+    @events.shuffle!
 
     # Initialize location deck
     @locations = YAML.load_file "#{card_path}/locations.yml"
@@ -23,12 +23,12 @@ class CardLibrary
 
     # Initialize brood lords, terrain cards, and setup locations
     misc = YAML.load_file "#{card_path}/misc.yml"
-    @brood_lords = misc[:brood_lords].shuffle
+    @brood_lords = misc[:brood_lords].shuffle!
     @terrain = misc[:terrain]
     @setup_locations = misc[:setup_locations]
 
     # Initialize genestealear deck
-    genestealer_prototypes = misc[:genestealers].shuffle
+    genestealer_prototypes = misc[:genestealers].shuffle!
     @genestealers = []
     genestealer_prototypes.each { |g| g.count.times { @genestealers << g } }
     @genestealers.shuffle!
