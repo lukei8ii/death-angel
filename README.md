@@ -8,6 +8,6 @@ Instructions
 
 After cloning the repo:
 
-  cd death-angel
-  bundle install
-  ruby game.rb
+    cd death-angel
+    bundle install
+    ruby game.rb
