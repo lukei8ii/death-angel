@@ -28,7 +28,7 @@ class CardLibrary
     # Initialize genestealear deck
     genestealer_prototypes = misc_data[:genestealers]
     @genestealers = []
-    genestealer_prototypes.each { |g| g[:count].times { @genestealers << Genestealer.create(g) } }
+    genestealer_prototypes.each { |g| g[:count].times { @genestealers << Genestealer.create(g.merge(factor_x: DeathAngel::CARD_SCALE, factor_y: DeathAngel::CARD_SCALE)) } }
     @genestealers.shuffle!
   end
 end

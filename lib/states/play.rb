@@ -14,11 +14,11 @@ class Play < Chingu::GameState
 
     # Set up blip piles from the setup location
     @blip = {}
-    @blip[:left] = @cards.genestealers.take @location.left_blip
-    @blip[:right] = @cards.genestealers.take @location.right_blip
+    @blip[:left] = @cards.genestealers.slice! 0, @location.left_blip
+    @blip[:right] = @cards.genestealers.slice! 0, @location.right_blip
 
     # Draw the first event card
-    @event = @cards.events.first
+    @event = @cards.events.slice! 0
 
     # Move space marines into the formation
     marines = @cards.space_marines.select do |m|
@@ -54,6 +54,9 @@ class Play < Chingu::GameState
     terrain_x = {}
     terrain_x[:left] = marine_x - terrain_offset
     terrain_x[:right] = marine_x + terrain_offset
+    spawn_x = {}
+    spawn_x[:left] = terrain_x[:left] - terrain_offset
+    spawn_x[:right] = terrain_x[:right] + terrain_offset
 
     @location.terrain.each do |loc_t|
       terrain = @cards.terrain.select { |t| loc_t[:type] == t.type }.first
@@ -67,7 +70,8 @@ class Play < Chingu::GameState
       end
 
       terrain.x = terrain.label.x = terrain_x[side]
-      terrain.y = terrain.label.y = get_y_formation(index, margin_y, starting_y)
+      spawn_y = terrain_y = get_y_formation(index, margin_y, starting_y)
+      terrain.y = terrain.label.y = terrain_y
 
       # [:x, :y, :zorder, :angle, :center_x, :center_y, :factor_x, :factor_y, :severity, :mode].each do |a|
       #   puts "terrain.#{a}: #{terrain.send(a)}"
@@ -76,20 +80,34 @@ class Play < Chingu::GameState
       terrain.show!
       terrain.label.show!
 
-      @formation[index][:terrain_position][side] = {
-        terrain: terrain
-      }
+      @formation[index][:terrain_position][side] = { terrain: terrain }
 
       # Move genestealers into the formation
-      @event.spawns.each do |s|
-        if terrain.severity == s[:severity]
-          amount = case s[:type]
-                   when :major then @setup_location.major_spawn
-                   else @setup_location.minor_spawn
-                   end
+      spawns = @event.spawns.select { |s| terrain.severity == s[:severity] }
 
-          @formation[index][:swarm][side] = @blip[side].slice!(0, amount)
+      spawns.each do |s|
+        # puts "severity: #{s[:severity]}"
+        puts "terrain: #{terrain.label.text}"
+        # puts "spawn #{side} x: #{spawn_x[side]}"
+        # puts "spawn #{side} y: #{terrain.y}"
+
+        amount = case s[:type]
+                 when :major then @setup_location.major_spawn
+                 else @setup_location.minor_spawn
+                 end
+
+        genestealers = @blip[side].slice!(0, amount)
+
+        genestealers.each do |g|
+          g.x = g.label.x = spawn_x[side]
+          g.y = g.label.y = spawn_y
+          g.label.text = "#{genestealers.size} #{'Genestealer'.pluralize(genestealers.size)}"
+
+          g.show!
+          g.label.show!
         end
+
+        @formation[index][:swarm][side] = genestealers
       end
     end
 
