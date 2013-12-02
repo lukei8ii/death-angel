@@ -24,12 +24,25 @@ class Play < Chingu::GameState
     marines = @cards.space_marines.select do |m|
       @player_one.combat_teams.include? m.team
     end
+
+    margin_x = margin_y = 20
+    starting_y = DeathAngel::CARD_HEIGHT + margin_y
+    marine_x = $window.width / 2
+
     @formation = []
     marines.shuffle.each_with_index.map do |marine, i|
+      marine.x = marine.label.x = marine_x
+      marine.y = marine.label.y = get_y_formation(i, margin_y, starting_y)
+      marine.show!
+      marine.label.show!
+
+      facing = i < marines.size / 2 ? :left : :right
+      marine.label.text = facing == :left ? "< #{marine.label.text}" : "#{marine.label.text} >"
+
       @formation << {
         marine_position: {
           marine: marine,
-          facing: i < marines.size / 2 ? :left : :right
+          facing: facing
         },
         terrain_position: {},
         swarm: {}
@@ -37,6 +50,11 @@ class Play < Chingu::GameState
     end
 
     # Move terrain into the formation
+    terrain_offset = DeathAngel::CARD_WIDTH + margin_x
+    terrain_x = {}
+    terrain_x[:left] = marine_x - terrain_offset
+    terrain_x[:right] = marine_x + terrain_offset
+
     @location.terrain.each do |loc_t|
       terrain = @cards.terrain.select { |t| loc_t[:type] == t.type }.first
       side = loc_t[:side]
@@ -48,13 +66,23 @@ class Play < Chingu::GameState
         index = @formation.size - 1 - loc_t[:position]
       end
 
+      terrain.x = terrain.label.x = terrain_x[side]
+      terrain.y = terrain.label.y = get_y_formation(index, margin_y, starting_y)
+
+      # [:x, :y, :zorder, :angle, :center_x, :center_y, :factor_x, :factor_y, :severity, :mode].each do |a|
+      #   puts "terrain.#{a}: #{terrain.send(a)}"
+      # end
+
+      terrain.show!
+      terrain.label.show!
+
       @formation[index][:terrain_position][side] = {
         terrain: terrain
       }
 
       # Move genestealers into the formation
       @event.spawns.each do |s|
-        if terrain.color == s[:color]
+        if terrain.severity == s[:severity]
           amount = case s[:type]
                    when :major then @setup_location.major_spawn
                    else @setup_location.minor_spawn
@@ -75,6 +103,10 @@ class Play < Chingu::GameState
     # SpaceMarine.create_from_object @cards.space_marines[2]
 
     # @testing = SpaceMarine.create(type: :whatever, range: 2, team: :blue)
+  end
+
+  def get_y_formation(row_index, margin, offset)
+    (row_index * DeathAngel::CARD_HEIGHT) + ((row_index + 1) * margin) + (DeathAngel::CARD_HEIGHT / 2) + offset
   end
 
   def update

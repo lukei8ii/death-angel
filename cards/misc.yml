@@ -21,25 +21,25 @@
   - :tongue
 :terrain:
 - :type: :corridor
-  :color: :green
+  :severity: :green
 - :type: :dark_corner
-  :color: :orange
+  :severity: :orange
 - :type: :ventilation_duct
-  :color: :red
+  :severity: :red
 - :type: :control_panel
-  :color: :yellow
+  :severity: :yellow
   :activate: Use the current Location card's "Activate Control Panel" ability.
 - :type: :door
-  :color: :yellow
+  :severity: :yellow
   :activate: Place 1 support token on this card. When traveling, the current player may first slay 1 Genestealer in the formation for each token on this card.
 - :type: :artifact
-  :color: :green
+  :severity: :green
   :activate: Place this card in your hand. You may discard this card after 1 of your defending Space Marines rolls the die to make the attack miss.
 - :type: :spore_chimney
-  :color: :red
+  :severity: :red
   :activate: Roll a die. If you roll <skull>, discard this Terrain card.
 - :type: :promethium_tank
-  :color: :orange
+  :severity: :orange
   :activate: Discard this Terrain card and slay all Genestealers on this position. Then roll a die, if you roll 0, slay this Space Marine.
 :setup_locations:
 - :terrain:

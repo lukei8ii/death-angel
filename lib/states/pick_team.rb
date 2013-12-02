@@ -11,13 +11,12 @@ class PickTeam < Chingu::GameState
 
     x_margin = 112
     y_margin = 150
-    x_scale = y_scale = 0.5
     @teams = []
     @selected = []
 
     CombatTeam::TYPE.each_with_index do |c, i|
-      @teams << team = CombatTeam.create(type: c, y: y_margin, factor_x: x_scale, factor_y: y_scale)
-      x_offset = (x_scale * team.width + x_margin) * i + x_margin
+      @teams << team = CombatTeam.create(type: c, y: y_margin, factor_x: DeathAngel::CARD_SCALE, factor_y: DeathAngel::CARD_SCALE)
+      x_offset = (DeathAngel::CARD_SCALE * team.width + x_margin) * i + x_margin
       team.x = x_offset
     end
 

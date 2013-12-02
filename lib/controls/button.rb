@@ -17,7 +17,7 @@ class Button < Chingu::GameObject
 
     self.y += @margin
 
-    @image = TexPlay.create_blank_image($window, @label.width + @margin, @label.height + @margin).rect(0, 0, @label.width + @margin, @label.height + @margin, color: DeathAngel::BUTTON_BACKGROUND_COLOR, fill: true)
+    @image = TexPlay.create_blank_image($window, @label.width + @margin, @label.height + @margin).fill(0, 0, color: DeathAngel::BUTTON_BACKGROUND_COLOR)
   end
 
   def setup

@@ -9,7 +9,7 @@ class CombatTeam < Chingu::GameObject
   def initialize(options = {})
     super
     @type = options[:type] || :red
-    @image = Gosu::Image["#{@type.to_s}.png"]
+    @image = Gosu::Image["#{@type.to_s}.png"].clone
   end
 
   # def draw
@@ -20,13 +20,12 @@ class CombatTeam < Chingu::GameObject
 
   def select
     @selected = true
-    @old_image = @image.clone
     @image.rect(BORDER, BORDER, @image.width - BORDER, @image.height - BORDER, color: DeathAngel::SELECTED_COLOR, thickness: BORDER * 2)
   end
 
   def deselect
     @selected = false
-    @image = @old_image
+    @image = Gosu::Image["#{@type.to_s}.png"].clone
   end
 
   def selected?
