@@ -21,7 +21,9 @@ class Play < Chingu::GameState
     @event = @cards.events.first
 
     # Move space marines into the formation
-    marines = @cards.space_marines.select { |m| @player_one.combat_teams.include? m.team }
+    marines = @cards.space_marines.select do |m|
+      @player_one.combat_teams.include? m.team
+    end
     @formation = []
     marines.shuffle.each_with_index.map do |marine, i|
       @formation << {
@@ -69,13 +71,18 @@ class Play < Chingu::GameState
     puts "Left blip pile: #{@blip[:left].size} cards"
     puts "Right blip pile: #{@blip[:right].size} cards"
     puts "Formation: #{@formation}"
+
+    SpaceMarine.create_from_object @cards.space_marines[2]
+
+    # @testing = SpaceMarine.create(type: :whatever, range: 2, team: :blue)
   end
 
   def update
 
   end
 
-  def draw
-
-  end
+  # def draw
+  #   super
+  #   @testing.draw
+  # end
 end

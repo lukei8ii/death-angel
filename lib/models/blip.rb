@@ -1,3 +1,3 @@
 class Blip
-  attr_reader :side, :cards
+  attr_accessor :side, :cards
 end

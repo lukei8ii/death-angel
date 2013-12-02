@@ -1,3 +1,3 @@
 class Terrain < Chingu::GameObject
-  attr_reader :type, :color, :activate
+  attr_accessor :type, :color, :activate
 end

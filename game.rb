@@ -1,5 +1,6 @@
 require "bundler/setup"
 require "active_support/core_ext/string"
+require "active_support/concern"
 require "chingu"
 require "hasu"
 require "texplay"
@@ -13,6 +14,8 @@ module DeathAngel
   SELECTABLE_COLOR = Gosu::Color::GRAY
   BUTTON_COLOR = Gosu::Color::WHITE
   BUTTON_BACKGROUND_COLOR = :cyan
+  CARD_WIDTH = 390
+  CARD_HEIGHT = 250
 end
 
 class Game < Chingu::Window
@@ -29,6 +32,8 @@ class Game < Chingu::Window
     self.caption = TITLE
     self.cursor = true
 
+    Gosu::Image.clear
+    Gosu::Sound.clear
     Gosu::Image.autoload_dirs << File.join(MEDIA_PATH, 'images')
     Gosu::Sound.autoload_dirs << File.join(MEDIA_PATH, 'sounds')
 

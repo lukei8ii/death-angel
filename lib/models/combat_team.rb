@@ -1,7 +1,7 @@
 class CombatTeam < Chingu::GameObject
   traits :bounding_box, :collision_detection
 
-  attr_reader :type
+  attr_accessor :type
 
   TYPE = %i(red blue yellow green purple gray)
   BORDER = 10

@@ -1,3 +1,3 @@
 class BroodLord < Chingu::GameObject
-  attr_reader :modifier, :types, :count
+  attr_accessor :modifier, :types, :count
 end
