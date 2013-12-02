@@ -1,19 +1,16 @@
-class SpaceMarine < Chingu::GameObject
-  include YamlObject
-
+class SpaceMarine < EnhancedGameObject
   attr_accessor :type, :range, :team
 
-  def initialize(options = {})
+  def initialize(options={})
     super
-    @type = options[:type]
-    @range = options[:range]
-    @team = options[:team]
-    @image = Gosu::Image["#{team.to_s}.png"]
+    @image = Gosu::Image["#{@team.to_s}.png"]
     @label = Chingu::Text.create(text: name, x: @x, y: @y, size: 20)
-  end
 
-  def setup
-
+    # disable until needed
+    hide!
+    pause!
+    @label.hide!
+    @label.pause!
   end
 
   def name

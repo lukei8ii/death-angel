@@ -65,14 +65,14 @@ class Play < Chingu::GameState
       end
     end
 
-    puts "Player 1's combat teams: #{@player_one.combat_teams}"
-    puts "Setup location: #{@setup_location}"
-    puts "Initial Event: #{@event}"
-    puts "Left blip pile: #{@blip[:left].size} cards"
-    puts "Right blip pile: #{@blip[:right].size} cards"
-    puts "Formation: #{@formation}"
+    # puts "Player 1's combat teams: #{@player_one.combat_teams}"
+    # puts "Setup location: #{@setup_location}"
+    # puts "Initial Event: #{@event}"
+    # puts "Left blip pile: #{@blip[:left].size} cards"
+    # puts "Right blip pile: #{@blip[:right].size} cards"
+    # puts "Formation: #{@formation}"
 
-    SpaceMarine.create_from_object @cards.space_marines[2]
+    # SpaceMarine.create_from_object @cards.space_marines[2]
 
     # @testing = SpaceMarine.create(type: :whatever, range: 2, team: :blue)
   end

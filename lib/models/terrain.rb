@@ -1,3 +1,3 @@
-class Terrain < Chingu::GameObject
+class Terrain < EnhancedGameObject
   attr_accessor :type, :color, :activate
 end

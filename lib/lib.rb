@@ -1,6 +1,7 @@
 Hasu.load "lib/extensions/collision_detection.rb"
 Hasu.load "lib/controls/button.rb"
 Hasu.load "lib/utility/yaml_object.rb"
+Hasu.load "lib/models/enhanced_game_object.rb"
 Hasu.load "lib/models/blip.rb"
 Hasu.load "lib/models/brood_lord.rb"
 Hasu.load "lib/models/combat_team_marker.rb"

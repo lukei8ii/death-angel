@@ -5,32 +5,30 @@ class CardLibrary
 
   def initialize(card_path)
     # Initialize event deck
-    event_prototypes = YAML.load_file "#{card_path}/events.yml"
+    event_data = YAML.load_file "#{card_path}/events.yml"
     @events = []
-    event_prototypes.each do |e|
-      count = e.count || 1
-      count.times { @events << e }
-    end
+    event_data.each { |e| e[:count].times { @events << Event.create(e) } }
     @events.shuffle!
 
     # Initialize location deck
-    @locations = YAML.load_file "#{card_path}/locations.yml"
+    location_data = YAML.load_file "#{card_path}/locations.yml"
+    @locations = location_data.map { |l| Location.create(l) }
 
     # Initialize combat teams
-    combat_team_cards = YAML.load_file "#{card_path}/marines.yml"
-    @space_marines = combat_team_cards[:space_marines]
-    @action_cards = combat_team_cards[:action_cards]
+    combat_team_data = YAML.load_file "#{card_path}/marines.yml"
+    @space_marines = combat_team_data[:space_marines].map { |sm| SpaceMarine.create(sm) }
+    @actions = combat_team_data[:actions].map { |a| Action.create(a) }
 
     # Initialize brood lords, terrain cards, and setup locations
-    misc = YAML.load_file "#{card_path}/misc.yml"
-    @brood_lords = misc[:brood_lords].shuffle!
-    @terrain = misc[:terrain]
-    @setup_locations = misc[:setup_locations]
+    misc_data = YAML.load_file "#{card_path}/misc.yml"
+    @brood_lords = misc_data[:brood_lords].map { |b| BroodLord.create(b) }.shuffle!
+    @terrain = misc_data[:terrain].map { |t| Terrain.create(t) }
+    @setup_locations = misc_data[:setup_locations].map { |sl| SetupLocation.create(sl) }
 
     # Initialize genestealear deck
-    genestealer_prototypes = misc[:genestealers].shuffle!
+    genestealer_prototypes = misc_data[:genestealers]
     @genestealers = []
-    genestealer_prototypes.each { |g| g.count.times { @genestealers << g } }
+    genestealer_prototypes.each { |g| g[:count].times { @genestealers << Genestealer.create(g) } }
     @genestealers.shuffle!
   end
 end
