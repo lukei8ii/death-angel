@@ -23,7 +23,7 @@ class CardLibrary
     misc_data = YAML.load_file "#{card_path}/misc.yml"
     @brood_lords = misc_data[:brood_lords].map { |b| BroodLord.create(b) }.shuffle!
     @terrain = misc_data[:terrain].map { |t| Terrain.create(t.merge(factor_x: DeathAngel::CARD_SCALE, factor_y: DeathAngel::CARD_SCALE)) }
-    @setup_locations = misc_data[:setup_locations].map { |sl| SetupLocation.create(sl) }
+    @setup_locations = misc_data[:setup_locations].map { |sl| SetupLocation.create(sl.merge(factor_x: DeathAngel::CARD_SCALE, factor_y: DeathAngel::CARD_SCALE)) }
 
     # Initialize genestealear deck
     genestealer_prototypes = misc_data[:genestealers]

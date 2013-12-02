@@ -10,7 +10,18 @@ class Play < Chingu::GameState
     # Set up the game board
     @players = [Player.new(@teams)]
     @player_one = @players[0]
+
+    margin_x = margin_y = 20
+    starting_y = DeathAngel::CARD_HEIGHT + margin_y
+    middle_x = $window.width / 2
+
+    setup_location_y = DeathAngel::CARD_HEIGHT / 2 + margin_y
     @setup_location = @location = @cards.setup_locations.select { |loc| loc.player_count.include? @players.size }.first
+    @setup_location.x = @setup_location.label.x = middle_x
+    @setup_location.y = @setup_location.label.y = setup_location_y
+
+    @setup_location.show!
+    @setup_location.label.show!
 
     # Set up blip piles from the setup location
     @blip = {}
@@ -25,13 +36,9 @@ class Play < Chingu::GameState
       @player_one.combat_teams.include? m.team
     end
 
-    margin_x = margin_y = 20
-    starting_y = DeathAngel::CARD_HEIGHT + margin_y
-    marine_x = $window.width / 2
-
     @formation = []
     marines.shuffle.each_with_index.map do |marine, i|
-      marine.x = marine.label.x = marine_x
+      marine.x = marine.label.x = middle_x
       marine.y = marine.label.y = get_y_formation(i, margin_y, starting_y)
       marine.show!
       marine.label.show!
@@ -52,8 +59,8 @@ class Play < Chingu::GameState
     # Move terrain into the formation
     terrain_offset = DeathAngel::CARD_WIDTH + margin_x
     terrain_x = {}
-    terrain_x[:left] = marine_x - terrain_offset
-    terrain_x[:right] = marine_x + terrain_offset
+    terrain_x[:left] = middle_x - terrain_offset
+    terrain_x[:right] = middle_x + terrain_offset
     spawn_x = {}
     spawn_x[:left] = terrain_x[:left] - terrain_offset
     spawn_x[:right] = terrain_x[:right] + terrain_offset
@@ -108,6 +115,17 @@ class Play < Chingu::GameState
         end
 
         @formation[index][:swarm][side] = genestealers
+      end
+    end
+
+    [:left, :right].each do |side|
+      @blip[side].each do |g|
+        g.x = g.label.x = terrain_x[side]
+        g.y = g.label.y = setup_location_y
+        g.label.text = "#{@blip[side].size} #{'Blip'.pluralize(@blip[side].size)}"
+
+        g.show!
+        g.label.show!
       end
     end
 
