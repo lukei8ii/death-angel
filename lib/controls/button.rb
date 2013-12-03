@@ -6,10 +6,10 @@ class Button < Chingu::GameObject
     @text = options[:text]
     @click = options[:click]
     @margin = options[:margin] || 5
-    @color = options[:color] || DeathAngel::BUTTON_COLOR
+    @text_color = options[:text_color] || DeathAngel::BUTTON_COLOR
     @background_color = options[:background_color] || DeathAngel::BUTTON_BACKGROUND_COLOR
 
-    @label = Chingu::Text.create(text: @text, color: @color, x: @x, y: @y, size: 30, zorder: @zorder + 1)
+    @label = Chingu::Text.create(text: @text, color: @text_color, x: @x, y: @y, size: 30, zorder: @zorder + 1)
     x_offset = @center_x * @label.width
     y_offset = @center_y * @label.height
     @label.x += @margin - x_offset

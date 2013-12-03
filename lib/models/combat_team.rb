@@ -2,6 +2,7 @@ class CombatTeam < Chingu::GameObject
   traits :bounding_box, :collision_detection
 
   attr_accessor :type
+  attr_accessor :label
 
   TYPE = %i(red blue yellow green purple gray)
   BORDER = 10
@@ -10,6 +11,9 @@ class CombatTeam < Chingu::GameObject
     super
     @type = options[:type] || :red
     @image = Gosu::Image["#{@type.to_s}.png"].clone
+    @label = Chingu::Text.create(text: type.to_s.titleize, x: @x, y: @y, size: 20, zorder: zorder + 1)
+    @label.center = 0.5
+    @label.color = Gosu::Color::BLACK if @type == :yellow
   end
 
   # def draw

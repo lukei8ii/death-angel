@@ -11,15 +11,15 @@ class PickTeam < Chingu::GameState
     @title = Chingu::Text.create(text: title_text, x: 0, y: 30, size: 30, max_width: $window.width, align: :center)
     self.input = { left_mouse_button: :clicked }
 
-    x_margin = 112
+    x_margin = 15
+    x_start = DeathAngel::CARD_WIDTH / 2 + x_margin
     y_margin = 150
     @teams = []
     @selected = []
 
     CombatTeam::TYPE.each_with_index do |c, i|
-      @teams << team = CombatTeam.create(type: c, y: y_margin, factor_x: DeathAngel::CARD_SCALE, factor_y: DeathAngel::CARD_SCALE)
-      x_offset = (DeathAngel::CARD_SCALE * team.width + x_margin) * i + x_margin
-      team.x = x_offset
+      x_offset = (DeathAngel::CARD_WIDTH + x_margin) * i + x_start
+      @teams << team = CombatTeam.create(type: c, x: x_offset, y: y_margin, factor_x: DeathAngel::CARD_SCALE, factor_y: DeathAngel::CARD_SCALE)
     end
 
     @submit = Button.create(center_x: 0.5, x: $window.width / 2, y: 300, text: "Start Game", click: -> { submit_teams })

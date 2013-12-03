@@ -51,7 +51,7 @@ end
 module DeathAngel
   SELECTED_COLOR = :white
   SELECTABLE_COLOR = Gosu::Color::GRAY
-  BUTTON_COLOR = Gosu::Color::WHITE
+  BUTTON_COLOR = Gosu::Color::BLACK
   BUTTON_BACKGROUND_COLOR = :cyan
   CARD_IMAGE_WIDTH = 390
   CARD_IMAGE_HEIGHT = 250

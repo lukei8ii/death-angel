@@ -9,6 +9,7 @@ class SpaceMarine < EnhancedGameObject
     # @image = TexPlay.create_blank_image($window, 390, 250).fill(0, 0, color: [1, 0, 0, 1])
     @label = Chingu::Text.create(text: name, x: @x, y: @y, size: 20)
     @label.center = 0.5
+    @label.color = Gosu::Color::BLACK if @team == :yellow
 
     # disable until needed
     hide!

@@ -7,6 +7,7 @@ class SetupLocation < EnhancedGameObject
     @image = Gosu::Image["location.png"].clone
     @label = Chingu::Text.create(text: @name, x: @x, y: @y, size: 20)
     @label.center = 0.5
+    @label.color = Gosu::Color::BLACK
 
     # disable until needed
     hide!
