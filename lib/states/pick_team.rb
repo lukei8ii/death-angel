@@ -5,6 +5,8 @@ class PickTeam < Chingu::GameState
   end
 
   def setup
+    @background = Chingu::GameObject.create(x: $window.width / 2, y: $window.height / 2, image: Gosu::Image["space_hulk.jpg"])
+
     title_text = "Choose your #{@picks} #{'combat team'.pluralize(@picks)}"
     @title = Chingu::Text.create(text: title_text, x: 0, y: 30, size: 30, max_width: $window.width, align: :center)
     self.input = { left_mouse_button: :clicked }

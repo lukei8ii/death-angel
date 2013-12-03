@@ -5,6 +5,8 @@ class Play < Chingu::GameState
   end
 
   def setup
+    @background = Chingu::GameObject.create(x: $window.width / 2, y: $window.height / 2, image: Gosu::Image["space_hulk2.jpg"])
+
     @cards = CardLibrary.new(File.join(ROOT_PATH, "cards"))
 
     # Set up the game board
@@ -94,7 +96,7 @@ class Play < Chingu::GameState
 
       spawns.each do |s|
         # puts "severity: #{s[:severity]}"
-        puts "terrain: #{terrain.label.text}"
+        # puts "terrain: #{terrain.label.text}"
         # puts "spawn #{side} x: #{spawn_x[side]}"
         # puts "spawn #{side} y: #{terrain.y}"
 
