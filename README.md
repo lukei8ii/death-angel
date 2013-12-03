@@ -1,4 +1,4 @@
-Space Hulk; Death Angel
+Space Hulk: Death Angel
 ===========
 
 This is an experiment to convert Space Hulk: Death Angel the card game into a computer game built in Ruby 2.0.
