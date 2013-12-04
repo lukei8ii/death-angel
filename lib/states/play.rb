@@ -26,9 +26,10 @@ class Play < Chingu::GameState
     @setup_location.label.show!
 
     # Set up blip piles from the setup location
-    @blip = {}
-    @blip[:left] = @cards.genestealers.slice! 0, @location.left_blip
-    @blip[:right] = @cards.genestealers.slice! 0, @location.right_blip
+    @blip = {
+      left: @cards.genestealers.slice!(0, @location.left_blip),
+      right: @cards.genestealers.slice!(0, @location.right_blip)
+    }
 
     # Draw the first event card
     @event = @cards.events.slice! 0
@@ -60,12 +61,14 @@ class Play < Chingu::GameState
 
     # Move terrain into the formation
     terrain_offset = DeathAngel::CARD_WIDTH + margin_x
-    terrain_x = {}
-    terrain_x[:left] = middle_x - terrain_offset
-    terrain_x[:right] = middle_x + terrain_offset
-    spawn_x = {}
-    spawn_x[:left] = terrain_x[:left] - terrain_offset
-    spawn_x[:right] = terrain_x[:right] + terrain_offset
+    terrain_x = {
+      left: middle_x - terrain_offset,
+      right: middle_x + terrain_offset
+    }
+    spawn_x = {
+      left: terrain_x[:left] - terrain_offset,
+      right: terrain_x[:right] + terrain_offset
+    }
 
     @location.terrain.each do |loc_t|
       terrain = @cards.terrain.select { |t| loc_t[:type] == t.type }.first
